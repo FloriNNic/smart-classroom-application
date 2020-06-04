@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.smart.classroom.ui.IdentificationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/info"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="175dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="0">
+
+            <RelativeLayout
+                android:id="@id/image_control"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/image">
+
+                <Button
+                    android:id="@id/select_image"
+                    style="@style/ButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="selectImage"
+                    android:text="@string/select_image" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@id/image"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/view_margin"
+                android:background="@drawable/back"
+                android:contentDescription="@string/target_image" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/faces" />
+
+        <ListView
+            android:id="@+id/list_identified_faces"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/back"
+            android:verticalSpacing="@dimen/view_margin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_margin"
+            android:text="@string/groups" />
+
+        <ListView
+            android:id="@+id/list_person_groups_identify"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/back"
+            android:verticalSpacing="@dimen/view_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@id/button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/identify"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginEnd="90dp"
+            android:layout_weight="1"
+            android:onClick="identify"
+            android:text="Mark attendance" />
+
+    </LinearLayout>
+
+</RelativeLayout>

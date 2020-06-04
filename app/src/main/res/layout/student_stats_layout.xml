@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100">
+
+    <TextView
+        android:id="@+id/nameView"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_weight="55"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="45"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:orientation="vertical"
+            tools:ignore="NestedWeights">
+
+            <TextView
+                android:id="@+id/attendanceView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonMinus"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="#00a4d6"
+                android:text="-"
+                android:textColor="#FFFFFF"
+                android:textSize="23sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/attendanceView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonPlus"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="#00a4d6"
+                android:text="+"
+                android:textColor="#FFFFFF"
+                android:textSize="23sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.882"
+                app:layout_constraintStart_toEndOf="@+id/buttonMinus"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/feedbackView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textStyle="italic"
+            android:textColor="#00a4d6"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>

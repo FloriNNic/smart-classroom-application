@@ -1,0 +1,127 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smart.classroom.ui.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/text_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="300dp"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_message"
+            android:textColor="#FFF"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/text_home"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="120dp"
+        android:elevation="6dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What would you like to do?"
+            android:textColor="#FFF"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button"
+                style="@style/ButtonStyle"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="65dp"
+                android:onClick="detection"
+                android:text="@string/perform_detection" />
+
+            <Button
+                android:id="@+id/button1"
+                style="@style/ButtonStyle"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="155dp"
+                android:onClick="managePersonGroups"
+                android:text="@string/manage_lab_groups" />
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/ButtonStyle"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="155dp"
+                android:onClick="identification"
+                android:text="Mark attendance" />
+
+            <Button
+                android:id="@+id/button3"
+                style="@style/ButtonStyle"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="65dp"
+                android:onClick="checkStats"
+                android:text="Check stats" />
+        </RelativeLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/bgapp"
+        android:layout_width="550dp"
+        android:layout_height="870dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bgapp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

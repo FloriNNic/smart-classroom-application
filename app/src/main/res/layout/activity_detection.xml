@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.smart.classroom.ui.DetectionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/info"
+        android:layout_marginBottom="@dimen/view_margin"
+        android:baselineAligned="false"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="@dimen/view_margin">
+
+            <RelativeLayout
+                android:id="@+id/image_control"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/image">
+
+                <Button
+                    android:id="@+id/select_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+
+                    android:text="@string/select_image"
+                    android:onClick="selectImage"
+                    style="@style/ButtonStyle" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@id/image"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/back"
+                android:layout_marginEnd="@dimen/view_margin"
+                android:contentDescription="@string/detection" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/view_margin"
+            android:text="@string/result" />
+
+        <ListView
+            android:id="@+id/list_detected_faces"
+            android:layout_width="match_parent"
+            android:background="@drawable/back"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:verticalSpacing="@dimen/view_margin" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/button_bar"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/detect"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:text="Perform full detection"
+            android:onClick="detect"
+            style="@style/ButtonStyle" />
+
+    </LinearLayout>
+
+</RelativeLayout>

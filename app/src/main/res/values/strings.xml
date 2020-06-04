@@ -1,0 +1,77 @@
+<resources>
+    <!-- Please refer to https://azure.microsoft.com/en-us/services/cognitive-services/face/ to get your subscription key -->
+    <!-- If you have subscription key with its corresponding endpoint, you can add them here to use the service -->
+    <string name="subscription_key">65ae48b8667a48e3ace55d92dc67ef8d</string>
+    <string name="endpoint">https://westeurope.api.cognitive.microsoft.com/face/v1.0</string>
+    <string name="app_name">Smart Classroom</string>
+
+    <!-- Main activity -->
+    <string name="hello_message">Hello, Professor</string>
+    <string name="detection">Detection</string>
+    <string name="perform_detection">Perform Detection</string>
+    <string name="identification">Identification</string>
+    <string name="grouping">Grouping</string>
+    <string name="manage_lab_groups">Manage Lab Groups</string>
+
+    <!-- Detection activity -->
+    <string name="image">Image:</string>
+    <string name="select_image">Select\nImage</string>
+    <string name="result">Result:</string>
+    <string name="detect">Detect</string>
+
+    <!-- Identification activity -->
+    <string name="identify">Identify</string>
+    <string name="manage_person_groups">Manage\nPerson\nGroups</string>
+    <string name="target_image">Target image</string>
+    <string name="faces">Faces in image:</string>
+    <string name="groups">Lab Groups (choose one):</string>
+    <string name="choose_image">Image containing all the students that attended the Lab:</string>
+
+    <!-- Person group management activities -->
+    <string name="delete">Delete</string>
+    <string name="done_and_save">Save</string>
+
+    <string name="person_group_list">Lab Groups List</string>
+    <string name="person_group_list_tip">- Tap on a group to edit.\n- Long tap to delete.</string>
+    <string name="add_person_group">Add Lab Group</string>
+
+    <string name="person_group">Lab Group</string>
+    <string name="person_group_tip">- Tap on a student to edit.\n- Long press to delete.</string>
+    <string name="person_group_name">Lab Group name:</string>
+    <string name="type_in_person_group_name_tip">Name (max 30 characters)</string>
+    <string name="add_person">Add Student</string>
+
+    <string name="person">Student</string>
+    <string name="persons">Students</string>
+    <string name="person_tip">- Long press on a face to delete.</string>
+    <string name="type_in_person_name_tip">Name (max 30 characters)</string>
+    <string name="add_face">Add Face</string>
+    <string name="person_name">Student name:</string>
+    <string name="add_face_to_person">Add Faces to Person</string>
+    <string name="select_face_tip">Select this student\'s faces (if exist) by click on the checkbox.</string>
+
+    <!-- Common in all activities -->
+    <string name="progress_dialog_title">Please wait</string>
+    <string name="view_log">View Log</string>
+
+    <!-- Select image activity -->
+    <string name="select_an_image">Select an Image</string>
+    <string name="take_photo">Take a Photo</string>
+    <string name="select_image_in_album">From Gallery</string>
+
+    <!-- Warning messages -->
+    <string name="person_name_empty_warning_message">Student name cannot be empty</string>
+    <string name="no_face_to_group">No faces to group</string>
+    <string name="no_person_group_selected_for_identification_warning">No person group selected</string>
+    <string name="face_cannot_be_identified">Unknown person</string>
+    <string name="user_provided_person_name">Person name</string>
+    <string name="user_provided_description_data">User data</string>
+    <string name="user_provided_person_group_name">Person group name</string>
+    <string name="user_provided_person_group_description_data">User data</string>
+
+    <!-- Feedback list -->
+    <string name="happy">HAPPY</string>
+    <string name="neutral">NEUTRAL</string>
+    <string name="angry">ANGRY</string>
+
+</resources>
