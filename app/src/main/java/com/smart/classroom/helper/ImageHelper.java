@@ -131,7 +131,7 @@ public class ImageHelper {
         if (faces != null) {
             for (Face face : faces) {
                 FaceRectangle faceRectangle =
-                        calculateFaceRectangle(bitmap, face.faceRectangle, FACE_RECT_SCALE_RATIO);
+                        calculateFaceRectangle(bitmap, face.faceRectangle);
 
                 canvas.drawRect(
                         faceRectangle.left,
@@ -216,7 +216,7 @@ public class ImageHelper {
     public static Bitmap generateFaceThumbnail(
             Bitmap originalBitmap,
             FaceRectangle faceRectangle) {
-        FaceRectangle faceRect = calculateFaceRectangle(originalBitmap, faceRectangle, FACE_RECT_SCALE_RATIO);
+        FaceRectangle faceRect = calculateFaceRectangle(originalBitmap, faceRectangle);
 
         return Bitmap.createBitmap(originalBitmap, faceRect.left, faceRect.top, faceRect.width, faceRect.height);
     }
@@ -284,26 +284,26 @@ public class ImageHelper {
     // Resize face rectangle, for better view for human
     // To make the rectangle larger, faceRectEnlargeRatio should be larger than 1, recommend 1.3
     private static FaceRectangle calculateFaceRectangle(
-            Bitmap bitmap, FaceRectangle faceRectangle, double faceRectEnlargeRatio) {
+            Bitmap bitmap, FaceRectangle faceRectangle) {
         // Get the resized side length of the face rectangle
-        double sideLength = faceRectangle.width * faceRectEnlargeRatio;
+        double sideLength = faceRectangle.width * ImageHelper.FACE_RECT_SCALE_RATIO;
         sideLength = Math.min(sideLength, bitmap.getWidth());
         sideLength = Math.min(sideLength, bitmap.getHeight());
 
         // Make the left edge to left more.
         double left = faceRectangle.left
-                - faceRectangle.width * (faceRectEnlargeRatio - 1.0) * 0.5;
+                - faceRectangle.width * (ImageHelper.FACE_RECT_SCALE_RATIO - 1.0) * 0.5;
         left = Math.max(left, 0.0);
         left = Math.min(left, bitmap.getWidth() - sideLength);
 
         // Make the top edge to top more.
         double top = faceRectangle.top
-                - faceRectangle.height * (faceRectEnlargeRatio - 1.0) * 0.5;
+                - faceRectangle.height * (ImageHelper.FACE_RECT_SCALE_RATIO - 1.0) * 0.5;
         top = Math.max(top, 0.0);
         top = Math.min(top, bitmap.getHeight() - sideLength);
 
         // Shift the top edge to top more, for better view for human
-        double shiftTop = faceRectEnlargeRatio - 1.0;
+        double shiftTop = ImageHelper.FACE_RECT_SCALE_RATIO - 1.0;
         shiftTop = Math.max(shiftTop, 0.0);
         shiftTop = Math.min(shiftTop, 1.0);
         top -= 0.15 * shiftTop * faceRectangle.height;

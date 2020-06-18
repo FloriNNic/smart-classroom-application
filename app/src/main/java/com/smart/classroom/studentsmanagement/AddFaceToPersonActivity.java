@@ -32,6 +32,7 @@
 //
 package com.smart.classroom.studentsmanagement;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -60,6 +61,7 @@ import com.smart.classroom.helper.ImageHelper;
 import com.smart.classroom.helper.LogHelper;
 import com.smart.classroom.helper.FaceRecognitionApp;
 import com.smart.classroom.helper.StorageHelper;
+import com.smart.classroom.ui.CustomImageView;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -74,6 +76,7 @@ import java.util.UUID;
 
 public class AddFaceToPersonActivity extends AppCompatActivity {
     // Background task of adding a face to person.
+    @SuppressLint("StaticFieldLeak")
     class AddFaceTask extends AsyncTask<Void, String, Boolean> {
         List<Integer> mFaceIndices;
         AddFaceTask(List<Integer> faceIndices) {
@@ -341,8 +344,7 @@ public class AddFaceToPersonActivity extends AppCompatActivity {
             faceChecked = new ArrayList<>();
 
             if (detectionResult != null) {
-                List<Face> faces = Arrays.asList(detectionResult);
-                for (Face face : faces) {
+                for (Face face : detectionResult) {
                         // Crop face thumbnail with five main landmarks drawn from original image.
                         faceThumbnails.add(ImageHelper.generateFaceThumbnail(mBitmap, face.faceRectangle));
                         faceIdList.add(null);
@@ -376,8 +378,7 @@ public class AddFaceToPersonActivity extends AppCompatActivity {
             }
             convertView.setId(position);
 
-            ((ImageView)convertView.findViewById(R.id.image_face))
-                    .setImageBitmap(faceThumbnails.get(position));
+            ((ImageView)convertView.findViewById(R.id.image_face)).setImageBitmap(faceThumbnails.get(position));
 
             // set the checked status of the item
             CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkbox_face);

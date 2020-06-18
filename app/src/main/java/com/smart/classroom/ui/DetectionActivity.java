@@ -32,6 +32,7 @@
 //
 package com.smart.classroom.ui;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -70,9 +71,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class DetectionActivity extends AppCompatActivity {
     // Background task of face detection.
+    @SuppressLint("StaticFieldLeak")
     private class DetectionTask extends AsyncTask<InputStream, String, Face[]> {
         private boolean mSucceed = true;
 
@@ -449,7 +452,7 @@ public class DetectionActivity extends AppCompatActivity {
                 emotionValue = emotion.surprise;
                 emotionType = "Surprise";
             }
-            return String.format("%s: %f", emotionType, emotionValue);
+            return String.format(Locale.ENGLISH,"%s: %f", emotionType, emotionValue);
         }
 
         private String getHeadPose(HeadPose headPose) {

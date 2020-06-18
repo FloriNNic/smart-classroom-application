@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
     public void managePersonGroups(View view) {
         Intent intent = new Intent(this, PersonGroupListActivity.class);
         startActivity(intent);
-
-        //refreshIdentifyButtonEnabledStatus();
     }
 
     public void checkStats(View view) {

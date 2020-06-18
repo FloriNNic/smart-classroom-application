@@ -44,7 +44,7 @@ import java.util.Set;
  * Defined several functions to manage local storage.
  */
 public class StorageHelper {
-    private static final String TAG = "StorageHelper";
+
     public static Set<String> getAllPersonGroupIds(Context context) {
         SharedPreferences personGroupIdSet = context.getSharedPreferences("PersonGroupIdSet", Context.MODE_PRIVATE);
         return personGroupIdSet.getStringSet("PersonGroupIdSet", new HashSet<>());
@@ -99,20 +99,17 @@ public class StorageHelper {
     }
 
     public static void markAttendance(String studentId, Context context, boolean increase){
-        SharedPreferences studentAttendance = context.getSharedPreferences("StudentAttendance", Context.MODE_PRIVATE);
+        SharedPreferences studentAttendance = context.getSharedPreferences(
+                                        "StudentAttendance", Context.MODE_PRIVATE);
         SharedPreferences.Editor attendanceEditor = studentAttendance.edit();
         int increasedAttendance = getStudentAttendance(studentId, context) + (increase ? 1 : -1);
         attendanceEditor.putInt(studentId, increasedAttendance);
         attendanceEditor.apply();
     }
 
-    public static int getStudentAttendance(String studentId, Context context) {
-        SharedPreferences studentAttendance = context.getSharedPreferences("StudentAttendance", Context.MODE_PRIVATE);
-        return studentAttendance.getInt(studentId, 0);
-    }
-
     public static void addFeedback(String personId, String feedback, Context context){
-        SharedPreferences studentFeedbackList = context.getSharedPreferences("StudentFeedbackList", Context.MODE_PRIVATE);
+        SharedPreferences studentFeedbackList = context.getSharedPreferences(
+                                        "StudentFeedbackList", Context.MODE_PRIVATE);
         SharedPreferences.Editor feedbackEditor = studentFeedbackList.edit();
         Set<String> feedbackList = getStudentFeedbackList(personId, context);
         int feedbackCount = 0;
@@ -121,10 +118,16 @@ public class StorageHelper {
                 feedbackCount ++;
             }
         }
+        // Because Set does not allow duplicate values, add an different index for each one
         String countedFeedback = feedback + feedbackCount;
         feedbackList.add(countedFeedback);
         feedbackEditor.putStringSet(personId, feedbackList);
         feedbackEditor.apply();
+    }
+
+    public static int getStudentAttendance(String studentId, Context context) {
+        SharedPreferences studentAttendance = context.getSharedPreferences("StudentAttendance", Context.MODE_PRIVATE);
+        return studentAttendance.getInt(studentId, 0);
     }
 
     public static Set<String> getStudentFeedbackList(String personId, Context context) {

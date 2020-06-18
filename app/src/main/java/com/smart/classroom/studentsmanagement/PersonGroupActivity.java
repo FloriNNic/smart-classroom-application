@@ -32,6 +32,7 @@
 //
 package com.smart.classroom.studentsmanagement;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -64,6 +65,7 @@ import com.smart.classroom.R;
 import com.smart.classroom.helper.LogHelper;
 import com.smart.classroom.helper.FaceRecognitionApp;
 import com.smart.classroom.helper.StorageHelper;
+import com.smart.classroom.ui.CustomImageView;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -138,12 +140,11 @@ public class PersonGroupActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     class TrainPersonGroupTask extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
-            addLog("Request: Training group " + params[0]);
-
             // Get an instance of face service client.
             FaceServiceClient faceServiceClient = FaceRecognitionApp.getFaceServiceClient();
             try{
@@ -164,9 +165,7 @@ public class PersonGroupActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onProgressUpdate(String... progress) {
-            setUiDuringBackgroundTask(progress[0]);
-        }
+        protected void onProgressUpdate(String... progress) { setUiDuringBackgroundTask(progress[0]); }
 
         @Override
         protected void onPostExecute(String result) {
@@ -174,7 +173,6 @@ public class PersonGroupActivity extends AppCompatActivity {
 
             if (result != null) {
                 addLog("Response: Success. Group " + result + " training completed");
-
                 finish();
             }
         }

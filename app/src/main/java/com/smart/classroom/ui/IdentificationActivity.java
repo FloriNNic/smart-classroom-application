@@ -42,39 +42,24 @@ import java.util.UUID;
 
 
 public class IdentificationActivity extends AppCompatActivity {
-
     // Background task of face identification.
     @SuppressLint("StaticFieldLeak")
     private class IdentificationTask extends AsyncTask<UUID, String, IdentifyResult[]> {
         private boolean mSucceed = true;
         String mPersonGroupId;
-        IdentificationTask(String personGroupId) {
-            this.mPersonGroupId = personGroupId;
-        }
+        IdentificationTask(String personGroupId) { this.mPersonGroupId = personGroupId; }
 
         @Override
         protected IdentifyResult[] doInBackground(UUID... params) {
-            String logString = "Request: Identifying faces ";
-            for (UUID faceId: params) {
-                logString += faceId.toString() + ", ";
-            }
-            logString += " in group " + mPersonGroupId;
-            addLog(logString);
-
             // Get an instance of face service client to detect faces in image.
             FaceServiceClient faceServiceClient = FaceRecognitionApp.getFaceServiceClient();
             try{
-                publishProgress("Getting person group status...");
-
-                TrainingStatus trainingStatus = faceServiceClient.getLargePersonGroupTrainingStatus(this.mPersonGroupId);     /* personGroupId */
+                TrainingStatus trainingStatus = faceServiceClient.getPersonGroupTrainingStatus(this.mPersonGroupId);
                 if (trainingStatus.status != TrainingStatus.Status.Succeeded) {
                     publishProgress("Person group training status is " + trainingStatus.status);
                     mSucceed = false;
                     return null;
                 }
-
-                publishProgress("Identifying...");
-
                 // Start identification.
                 return faceServiceClient.identityInLargePersonGroup(
                         this.mPersonGroupId,   /* personGroupId */
@@ -94,16 +79,10 @@ public class IdentificationActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onProgressUpdate(String... values) {
-            // Show the status of background detection task on screen.
-            setUiDuringBackgroundTask(values[0]);
-        }
+        protected void onProgressUpdate(String... values) { setUiDuringBackgroundTask(values[0]); }
 
         @Override
-        protected void onPostExecute(IdentifyResult[] result) {
-            // Show the result on screen when detection is done.
-            setUiAfterIdentification(result, mSucceed);
-        }
+        protected void onPostExecute(IdentifyResult[] result) { setUiAfterIdentification(result, mSucceed); }
     }
 
     String mPersonGroupId;
@@ -229,24 +208,16 @@ public class IdentificationActivity extends AppCompatActivity {
                 return null;
             }
         }
-
         @Override
         protected void onPreExecute() {
             setUiBeforeBackgroundTask();
         }
-
         @Override
-        protected void onProgressUpdate(String... values) {
-            // Show the status of background detection task on screen.
-            setUiDuringBackgroundTask(values[0]);
-        }
-
+        protected void onProgressUpdate(String... values) { setUiDuringBackgroundTask(values[0]); }
         @Override
         protected void onPostExecute(Face[] result) {
             progressDialog.dismiss();
-
             setAllButtonsEnabledStatus(true);
-
             if (result != null) {
                 // Set the adapter of the ListView which contains the details of detected faces.
                 mFaceListAdapter = new FaceListAdapter(result);
@@ -275,7 +246,6 @@ public class IdentificationActivity extends AppCompatActivity {
             } else {
                 detected = false;
             }
-
             refreshIdentifyButtonEnabledStatus();
         }
     }

@@ -2,7 +2,6 @@ package com.smart.classroom.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ListView;
 
 
@@ -10,9 +9,7 @@ import com.smart.classroom.R;
 import com.smart.classroom.helper.StorageHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
 
 public class CheckStatsActivity extends AppCompatActivity {
 
@@ -33,21 +30,21 @@ public class CheckStatsActivity extends AppCompatActivity {
             // Retrieve all the students IDs from a laboratory group
             Set<String> studentsIds = StorageHelper.getAllPersonIds(groupId, this);
             for (String studentId : studentsIds) {
-                // Retrieve the name, attendance status and feedback list of a student identified by studentId
+                // Retrieve the name, attendance and feedback list of a student identified by studentId
                 String studentName = StorageHelper.getPersonName(studentId, groupId, this);
                 int attendance = StorageHelper.getStudentAttendance(studentId, this);
-
                 // Compute the most frequent feedback from the list
                 Set<String> feedbackList = StorageHelper.getStudentFeedbackList(studentId, this);
                 String feedback = getDominantFeedbackFrom(feedbackList);
 
                 // Serialize the stats and add them into a list
-                StudentStats student = new StudentStats(studentId, studentName, groupName, attendance, feedback);
+                StudentStats student = new StudentStats(studentId,studentName,groupName,attendance,feedback);
                 studentsStatsList.add(student);
             }
         }
 
-        StudentsListAdapter adapter = new StudentsListAdapter(this, R.layout.student_stats_layout, studentsStatsList);
+        StudentsListAdapter adapter = new StudentsListAdapter(this, R.layout.student_stats_layout,
+                studentsStatsList);
         mListView.setAdapter(adapter);
     }
 
